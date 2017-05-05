@@ -40,3 +40,24 @@ func regionSum(matrix: [[Int]], topLeft: [Int], bottomRight: [Int]) -> Int {
 //regionSum(matrix: [[0, 1, 2], [3, 4, 5], [6, 7, 8]], topLeft: [1, 1], bottomRight: [2, 2]) //24
 //regionSum(matrix: [[0, 1, 2], [3, 4, 5], [6, 7, 8]], topLeft: [0, 0], bottomRight: [2, 2]) //36
 //regionSum(matrix: [[0, 1, 2], [3, 4, 5], [6, 7, 8]], topLeft: [2, 2], bottomRight: [2, 2]) //8
+
+// 3.) largest continuous sum: Given an array of integers (positive and negative) find the largest continuous sum.
+func largestContSum(nums: [Int]) -> Int {
+    if nums.count == 0 {
+        return 0
+    }
+    
+    var maxCurrent = nums[0]
+    var maxSoFar = nums[0]
+    
+    for i in 1..<nums.count {
+        maxCurrent = max(nums[i], maxCurrent + nums[i])
+        maxSoFar = max(maxCurrent, maxSoFar)
+    }
+    
+    return maxSoFar
+}
+
+//largestContSum(nums: [1, -4, 5, -9, 10, -7, 5]) //10
+//largestContSum(nums: [5, 6, 10, -9, 1, -12, 1]) //21
+//largestContSum(nums: [1, 2, 3, 4, 5, 6, 7, 8, 9]) //45
