@@ -84,3 +84,17 @@ func findMissing(nums1: [Int], nums2: [Int]) -> Int {
 //findMissing(nums1: [1, 2, 3, 4, 5, 6, 7, 8, 9], nums2: [1, 2, 3, 4, 5, 6, 7, 8]) //9
 //findMissing(nums1: [1, 2, 3, 4, 5, 6, 7, 8, 9], nums2: [1, 3, 4, 5, 6, 7, 8, 9]) //2
 //findMissing(nums1: [1, 2, 3, 4, 5, 6, 7, 8, 9], nums2: [1, 2, 3, 5, 6, 7, 8, 9]) //4
+
+// 5.) linked list remove Nodes: Given a linkedlist of integers and an integer value, delete every node of the linkedlist containing that value.
+func removeNodes(head: ListNode?, n: Int) -> ListNode? {
+    var currentHead = head
+    
+    while currentHead != nil {
+        if (currentHead?.value)! == n {
+            currentHead?.next = currentHead?.next?.next
+        } else {
+            currentHead = currentHead?.next
+        }
+    }
+    return currentHead
+}
