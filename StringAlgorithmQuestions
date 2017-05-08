@@ -1,1 +1,16 @@
-
+// 1.) Find Duplicate Characters from String
+func findDuplicatesString(str: String) -> [Character] {
+    var result = [Character]()
+    var set = Set<Character>()
+    let strChar = Array(str.characters)
+    
+    for char in strChar {
+        if set.contains(char) {
+            result.append(char)
+        } else {
+            set.insert(char)
+        }
+    }
+    
+    return result
+}
