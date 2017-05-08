@@ -131,3 +131,16 @@ func isShuffle(str1: String, str2: String, str3: String) -> Bool {
 //isShuffle(str1: "abc", str2: "def", str3: "dabecf") //true
 //isShuffle(str1: "abc", str2: "def", str3: "edabcf") //false
 //isShuffle(str1: "abc", str2: "def", str3: "bdaecf") //false
+
+// 7.) binary search tree check: Given a binary tree, check whether it’s a binary search tree or not.
+func isBST(root: TreeNode?, min: Int, max: Int) -> Bool {
+    if root == nil {
+        return true
+    }
+    
+    if (root?.value)! > max || (root?.value)! < min {
+        return false
+    }
+    
+    return isBST(root: root?.left, min: min, max: (root?.value)! - 1) && isBST(root: root?.right, min: (root?.value)! + 1, max: max)
+}
