@@ -35,3 +35,27 @@ func checkAnagram(str1: String, str2: String) -> Bool {
     
     return str2Array.count == 0
 }
+
+// 3.) print first non repeated character from String
+func firstNonRepeating(str: String) -> Character {
+    var repeating = Set<Character>()
+    var nonRepeating = [Character]()
+    var index = 0
+    let strArray = Array(str.characters)
+    
+    for char in str.characters {
+        if repeating.contains(char) {
+            continue
+        }
+        
+        if nonRepeating.contains(char) {
+            nonRepeating.remove(at: strArray.index(of: char)!)
+            repeating.insert(char)
+        } else {
+            nonRepeating.append(char)
+        }
+        index += 1
+    }
+    
+    return nonRepeating[0]
+}
