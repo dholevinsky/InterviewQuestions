@@ -14,3 +14,24 @@ func findDuplicatesString(str: String) -> [Character] {
     
     return result
 }
+
+// 2.) check if two Strings are anagrams of each other
+func checkAnagram(str1: String, str2: String) -> Bool {
+    if str1.characters.count != str2.characters.count {
+        return false
+    }
+    
+    var str2Array = Array(str2.characters)
+    
+    for char in str1.characters {
+        let index = str2Array.index(of: char)
+        
+        if index != -1 && index != nil {
+            str2Array.remove(at: index!)
+        } else {
+            return false
+        }
+    }
+    
+    return str2Array.count == 0
+}
