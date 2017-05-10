@@ -93,3 +93,26 @@ func reverseStringRecursion(str: String) -> String {
 func onlyDigits(str: String) -> Bool {
     return Int(str) != nil
 }
+
+// 6.) print all duplicate character and their count
+func findCountOfDuplicates(str: String) -> [Character: Int] {
+    var strDict = [Character : Int]()
+    var result = [Character : Int]()
+    let strArray = Array(str.characters)
+    
+    for char in strArray {
+        if (strDict[char] != nil) {
+            strDict.updateValue(strDict[char]! + 1, forKey: char)
+        } else {
+            strDict.updateValue(1, forKey: char)
+        }
+    }
+    
+    for (char, number) in strDict {
+        if number > 1 {
+            result.updateValue(number, forKey: char)
+        }
+    }
+    
+    return result
+}
