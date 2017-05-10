@@ -88,3 +88,8 @@ func reverseStringRecursion(str: String) -> String {
     
     return reverseStringRecursion(str: (String(str.substring(from: str.index(after: str.startIndex)))!)) + String(str[str.startIndex])
 }
+
+// 5.) check if a String contains only digits
+func onlyDigits(str: String) -> Bool {
+    return Int(str) != nil
+}
