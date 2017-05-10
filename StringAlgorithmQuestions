@@ -59,3 +59,32 @@ func firstNonRepeating(str: String) -> Character {
     
     return nonRepeating[0]
 }
+
+// 4.) reverse a string
+// a.) using iteration
+func reverseStringIteration(str: String) -> String {
+    var result = Array(str.characters)
+    var temp: Character
+    var p1 = 0
+    var p2 = str.characters.count - 1
+    
+    while p1 < str.characters.count / 2 {
+        temp = result[p1]
+        result[p1] = result[p2]
+        result[p2] = temp
+        
+        p1 += 1
+        p2 -= 1
+    }
+    
+    return String(result)
+}
+
+// b.) using recursion
+func reverseStringRecursion(str: String) -> String {
+    if str.characters.count < 2 {
+        return str
+    }
+    
+    return reverseStringRecursion(str: (String(str.substring(from: str.index(after: str.startIndex)))!)) + String(str[str.startIndex])
+}
