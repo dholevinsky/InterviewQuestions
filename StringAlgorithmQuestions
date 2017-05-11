@@ -134,3 +134,17 @@ func countVowelsAndConsonants(str: String) -> [Int] {
     
     return [vowelsCount, consonantsCount]
 }
+
+// 8.) count occurrence of a given character in String
+func countCharacter(str: String, character: Character) -> Int {
+    var count = 0
+    let strArray = Array(str.lowercased().characters)
+    
+    for char in strArray {
+        if char == character {
+            count += 1
+        }
+    }
+    
+    return count
+}
