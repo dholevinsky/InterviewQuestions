@@ -116,3 +116,21 @@ func findCountOfDuplicates(str: String) -> [Character: Int] {
     
     return result
 }
+
+// 7.) count number of vowels and consonants in a String
+func countVowelsAndConsonants(str: String) -> [Int] {
+    var vowelsCount = 0
+    var consonantsCount = 0
+    let strArray = Array(str.lowercased().characters)
+    
+    for char in strArray {
+        switch char {
+        case "a", "e", "i", "o", "y":
+            vowelsCount += 1
+        default:
+            consonantsCount += 1
+        }
+    }
+    
+    return [vowelsCount, consonantsCount]
+}
