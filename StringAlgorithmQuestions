@@ -148,3 +148,8 @@ func countCharacter(str: String, character: Character) -> Int {
     
     return count
 }
+
+// 9.) convert numeric String to an int
+func convertStringToInt(str: String) -> Int? {
+    return Int(str) != nil ? Int(str)! : nil
+}
