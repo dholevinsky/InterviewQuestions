@@ -153,3 +153,18 @@ func countCharacter(str: String, character: Character) -> Int {
 func convertStringToInt(str: String) -> Int? {
     return Int(str) != nil ? Int(str)! : nil
 }
+
+// 10.) replace each given character to other e.g. blank with %20
+func replaceSpaces(str: String) -> String {
+    var result = ""
+    
+    for char in str.characters {
+        if char == " " {
+            result += "%20"
+        } else {
+            result += String(char)
+        }
+    }
+    
+    return result
+}
