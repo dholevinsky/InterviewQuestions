@@ -244,3 +244,27 @@ func removeDupsFromString(str: String) -> String {
     
     return result
 }
+
+// 17.) return highest occurred character in a String
+func mostCommonCharacter(str: String) -> Character {
+    var dict = [Character : Int]()
+    var maxCharacter = 0
+    var result: Character? = nil
+    
+    for char in str.characters {
+        if dict[char] != nil {
+            dict.updateValue(dict[char]! + 1, forKey: char)
+        } else {
+            dict.updateValue(1, forKey: char)
+        }
+        
+        //        maxCharacter = max(maxCharacter, dict[char]!)
+        
+        if dict[char]! > maxCharacter {
+            maxCharacter = dict[char]!
+            result = char
+        }
+    }
+    
+    return result!
+}
