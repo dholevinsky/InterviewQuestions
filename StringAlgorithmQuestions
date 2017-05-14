@@ -168,3 +168,46 @@ func replaceSpaces(str: String) -> String {
     
     return result
 }
+
+// 12.) reverse the words in a sentence
+func reverseSentence(str: String) -> String {
+    var input = reverseSection(str: str, start: 0, end: str.characters.count)
+    var startIndex = 0
+    var endIndex = 0
+    var result = ""
+    
+    for char in input.characters {
+        if endIndex == input.characters.count - 1 {
+            result += reverseSection(str: input, start: startIndex, end: endIndex+1)
+            result += " "
+            startIndex = endIndex + 1
+            endIndex += 1
+        }
+        
+        if char != " " {
+            endIndex += 1
+        } else {
+            result += reverseSection(str: input, start: startIndex, end: endIndex)
+            result += " "
+            startIndex = endIndex + 1
+            endIndex += 1
+        }
+    }
+    return result
+}
+
+func reverseSection(str: String, start: Int, end: Int) -> String {
+    var p1 = start
+    var p2 = end - 1
+    var temp: Character
+    var strArray = Array(str.characters)
+    
+    while p1 <= (p2 + p1) / 2 {
+        temp = strArray[p1]
+        strArray[p1] = strArray[p2]
+        strArray[p2] = temp
+        p1 += 1
+        p2 -= 1
+    }
+    return String(strArray[start..<end])
+}
