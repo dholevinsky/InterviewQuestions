@@ -228,3 +228,19 @@ func checkPalindrome(str: String) -> Bool {
     }
     return true
 }
+
+// 14.) remove duplicate characters from String
+func removeDupsFromString(str: String) -> String {
+    var input = str.lowercased()
+    var result = ""
+    var set = Set<Character>()
+    
+    for char in input.characters {
+        if !set.contains(char) {
+            result += String(char)
+            set.insert(char)
+        }
+    }
+    
+    return result
+}
