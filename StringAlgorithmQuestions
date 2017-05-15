@@ -268,3 +268,39 @@ func mostCommonCharacter(str: String) -> Character {
     
     return result!
 }
+
+// 19.) find longest palindrome in a string
+func longestPalindrome(_ s: String) -> String {
+    if s.characters.count == 1 {
+        return s
+    }
+    
+    var result = ""
+    var sArray = Array(s.characters)
+    
+    for i in 0..<s.characters.count {
+        for j in i..<s.characters.count {
+            if checkPalindrome2(str: s, start: i, end: j) && String(sArray[i...j]).characters.count > result.characters.count {
+                result = String(sArray[i...j])
+            }
+        }
+    }
+    
+    return result
+}
+
+func checkPalindrome2(str: String, start: Int, end: Int) -> Bool {
+    var p1 = start
+    var p2 = end
+    var strArray = Array(str.characters)
+    
+    while p1 <= (p1 + p2) / 2 {
+        if strArray[p1] != strArray[p2] {
+            return false
+        }
+        
+        p1 += 1
+        p2 -= 1
+    }
+    return true
+}
