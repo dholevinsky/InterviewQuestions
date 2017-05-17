@@ -1,0 +1,11 @@
+// 1.) find the missing number in an array
+func findMissing(nums: [Int]) -> Int {
+    let expectedSum = ((nums.count + 1) * (nums.count + 2)) / 2
+    var sum = 0
+    
+    for num in nums {
+        sum += num
+    }
+        
+    return expectedSum - sum
+}
