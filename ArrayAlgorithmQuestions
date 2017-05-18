@@ -9,3 +9,17 @@ func findMissing(nums: [Int]) -> Int {
         
     return expectedSum - sum
 }
+
+// 2.) find duplicate number on array
+func findDuplicateNumber(nums: [Int]) -> Int {
+    var set = Set<Int>()
+    
+    for num in nums {
+        if set.contains(num) {
+            return num
+        } else {
+            set.insert(num)
+        }
+    }
+    return -1
+}
