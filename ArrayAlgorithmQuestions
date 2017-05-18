@@ -23,3 +23,15 @@ func findDuplicateNumber(nums: [Int]) -> Int {
     }
     return -1
 }
+
+// 2.b) find duplicate number on array with no extra data structures
+func findDuplicateNumber2(nums: [Int]) -> Int {
+    let sortedNums = nums.sorted()
+    
+    for index in 0..<sortedNums.count - 1 {
+        if sortedNums[index] == sortedNums[index + 1] {
+            return sortedNums[index]
+        }
+    }
+    return -1
+}
