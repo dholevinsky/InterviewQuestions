@@ -35,3 +35,13 @@ func findDuplicateNumber2(nums: [Int]) -> Int {
     }
     return -1
 }
+
+// 3.) check if array contains a number
+func checkArrayNumber(nums: [Int]) -> Bool {
+    for num in nums {
+        if Int(num) == num {
+            return true
+        }
+    }
+    return false
+}
