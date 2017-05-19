@@ -45,3 +45,15 @@ func checkArrayNumber(nums: [Int]) -> Bool {
     }
     return false
 }
+
+// 4.) find largest and smallest number in unsorted array
+func maxAndMin(nums: [Int]) -> (Int, Int) {
+    var maxNum = nums[0]
+    var minNum = nums[0]
+    
+    for num in nums {
+        maxNum = max(maxNum, num)
+        minNum = min(minNum, num)
+    }
+    return (maxNum, minNum)
+}
