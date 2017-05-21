@@ -108,3 +108,30 @@ func removeDuplicatesArray(nums: [Int]) -> [Int] {
     }
     return result
 }
+
+// 8.) sort an array in place using QuickSort
+func quickSortPartition(a: inout [Int], low: Int, high: Int) -> Int {
+    let pivot = a[low]
+    
+    var i = low - 1
+    var j = high + 1
+    
+    while true {
+        repeat { j -= 1 } while a[j] > pivot
+        repeat { i += 1 } while a[i] < pivot
+        
+        if i < j {
+            swap(&a[i], &a[j])
+        } else {
+            return j
+        }
+    }
+}
+
+func quickSortAlgorithm(a: inout [Int], low: Int, high: Int) {
+    if low < high {
+        let p = quickSortPartition(a: &a, low: low, high: high)
+        quickSortAlgorithm(a: &a, low: low, high: p)
+        quickSortAlgorithm(a: &a, low: p+1, high: high)
+    }
+}
