@@ -72,3 +72,25 @@ func findSumPairs(nums: [Int], target: Int) -> [[Int]] {
     }
     return result
 }
+
+// 6.) find repeated numbers in an array if it contains multiple duplicate
+func findRepeatedWithMultiples(nums: [Int]) -> [Int : Int] {
+    var result = [Int : Int]()
+    var dict = [Int : Int]()
+    
+    for num in nums {
+        if dict[num] != nil {
+            dict.updateValue(dict[num]! + 1, forKey: num)
+        } else {
+            dict.updateValue(1, forKey: num)
+        }
+    }
+    
+    for (num, number) in dict {
+        if number > 1 {
+            result.updateValue(number, forKey: num)
+        }
+    }
+    
+    return result
+}
