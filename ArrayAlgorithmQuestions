@@ -57,3 +57,18 @@ func maxAndMin(nums: [Int]) -> (Int, Int) {
     }
     return (maxNum, minNum)
 }
+
+// 5.) find all pairs on integer array whose sum is equal to given number
+func findSumPairs(nums: [Int], target: Int) -> [[Int]] {
+    var result = [[Int]]()
+    var dict = [Int : Int]()
+    
+    for index in 0..<nums.count {
+        if let newK = dict[nums[index]] {
+            result.append([newK, index])
+        } else {
+            dict[target - nums[index]] = index
+        }
+    }
+    return result
+}
