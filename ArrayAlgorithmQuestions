@@ -152,3 +152,18 @@ func findIntersection(nums1: [Int], nums2: [Int]) -> [Int] {
     }
     return result
 }
+
+// 10.) There is an array with every element repeated twice except one. Find that element
+func singleElement(nums: [Int]) -> Int {
+    var set = Set<Int>()
+    
+    for num in nums {
+        if set.contains(num) {
+            set.remove(num)
+        } else {
+            set.insert(num)
+        }
+    }
+    
+    return set[set.startIndex]
+}
