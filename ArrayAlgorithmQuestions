@@ -135,3 +135,20 @@ func quickSortAlgorithm(a: inout [Int], low: Int, high: Int) {
         quickSortAlgorithm(a: &a, low: p+1, high: high)
     }
 }
+
+// 9.) find intersection of two sorted arrays
+func findIntersection(nums1: [Int], nums2: [Int]) -> [Int] {
+    var result = [Int]()
+    var set = Set<Int>()
+    
+    for num in nums1 {
+        set.insert(num)
+    }
+    
+    for num in nums2 {
+        if set.contains(num) {
+            result.append(num)
+        }
+    }
+    return result
+}
