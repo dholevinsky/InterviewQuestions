@@ -167,3 +167,12 @@ func singleElement(nums: [Int]) -> Int {
     
     return set[set.startIndex]
 }
+
+func singleElementBit(nums: [Int]) -> Int {
+    var result = 0
+    
+    for num in nums {
+        result ^= num
+    }
+    return result
+}
