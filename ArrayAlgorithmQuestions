@@ -176,3 +176,10 @@ func singleElementBit(nums: [Int]) -> Int {
     }
     return result
 }
+
+// 11.) find kth smallest element in unsorted array
+func findKSmallest(nums: [Int], k: Int) -> Int {
+    let sortedNum2 = nums.sorted()
+    
+    return sortedNum2[k - 1]
+}
