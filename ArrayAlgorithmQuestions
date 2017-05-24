@@ -183,3 +183,10 @@ func findKSmallest(nums: [Int], k: Int) -> Int {
     
     return sortedNum2[k - 1]
 }
+
+// 12.) find kth largest element in unsorted array
+func findKLargest(nums: [Int], k: Int) -> Int {
+    let sortedNums = nums.sorted()
+    
+    return sortedNums[sortedNums.count - k]
+}
