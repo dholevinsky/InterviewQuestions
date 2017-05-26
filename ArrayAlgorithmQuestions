@@ -232,3 +232,26 @@ func firstRepeating(nums: [Int]) -> Int? {
     
     return result
 }
+
+// 15.) first non-repeating element in array of integers
+func firstNonRepeating(nums: [Int]) -> Int {
+    var repeating = Set<Int>()
+    var nonRepeating = [Int]()
+    var index = 0
+    
+    for num in nums {
+        if repeating.contains(num) {
+            continue
+        }
+        
+        if nonRepeating.contains(num) {
+            nonRepeating.remove(at: index)
+            repeating.insert(num)
+        } else {
+            nonRepeating.append(num)
+        }
+        
+        index += 1
+    }
+    return nonRepeating[0]
+}
