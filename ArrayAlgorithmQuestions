@@ -283,3 +283,19 @@ func findSmallest(nums: [Int]) -> Int {
     }
     return result
 }
+
+// 19.) find if there is a sub array with sum equal to zero
+func subArrayZero(nums: [Int]) -> [[Int]] {
+    var dict = [Int : Int]()
+    var result = [[Int]]()
+    
+    for index in 0..<nums.count {
+        if let newK = dict[nums[index]] {
+            result.append([newK, index])
+        } else {
+            dict[0 - nums[index]] = index
+        }
+    }
+    
+    return result
+}
