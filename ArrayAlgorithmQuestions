@@ -271,3 +271,15 @@ func findTopTwo(nums: [Int]) -> [Int] {
     }
     return [max1, max2]
 }
+
+// 17.) find the smallest positive integer value that cannot be represented as sum of any subset of a given sorted array
+func findSmallest(nums: [Int]) -> Int {
+    var result = 1
+    var index = 0
+    
+    while index < nums.count && nums[index] <= result {
+        result += nums[index]
+        index += 1
+    }
+    return result
+}
