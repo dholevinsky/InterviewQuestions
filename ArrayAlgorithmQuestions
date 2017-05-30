@@ -299,3 +299,17 @@ func subArrayZero(nums: [Int]) -> [[Int]] {
     
     return result
 }
+
+// 20.) remove duplicates from array in place and return length
+func removeDuplicatesInPlace(nums: inout [Int]) -> Int {
+    var set = Set<Int>()
+    
+    for num in nums {
+        if set.contains(num) {
+            nums.remove(at: nums.index(of: num)!)
+        } else {
+            set.insert(num)
+        }
+    }
+    return nums.count
+}
