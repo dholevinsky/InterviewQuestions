@@ -357,3 +357,15 @@ func mergeSortedArray(nums1: [Int], nums2: [Int]) -> [Int] {
     
     return result
 }
+
+// 23.) find sub array with maximum sum in an array of positive and negative number
+func maxSubArray(nums: [Int]) -> Int {
+    var maxCurrent = nums[0]
+    var maxSoFar = nums[0]
+    
+    for index in 0..<nums.count {
+        maxCurrent = max(maxCurrent + nums[index], nums[index])
+        maxSoFar = max(maxCurrent, maxSoFar)
+    }
+    return maxSoFar
+}
