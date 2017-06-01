@@ -323,3 +323,37 @@ func removeElementArray(nums: inout [Int], value: Int) -> Int {
     }
     return nums.count
 }
+
+// 22.) merge a sorted array
+func mergeSortedArray(nums1: [Int], nums2: [Int]) -> [Int] {
+    var leftIndex = 0
+    var rightIndex = 0
+    var result = [Int]()
+    
+    while leftIndex < nums1.count && rightIndex < nums2.count {
+        if nums1[leftIndex] < nums2[rightIndex] {
+            result.append(nums1[leftIndex])
+            leftIndex += 1
+        } else if nums1[leftIndex] > nums2[rightIndex] {
+            result.append(nums2[rightIndex])
+            rightIndex += 1
+        } else {
+            result.append(nums1[leftIndex])
+            leftIndex += 1
+            result.append(nums2[rightIndex])
+            rightIndex += 1
+        }
+    }
+    
+    while leftIndex < nums1.count {
+        result.append(nums1[leftIndex])
+        leftIndex += 1
+    }
+    
+    while rightIndex < nums2.count {
+        result.append(nums2[rightIndex])
+        rightIndex += 1
+    }
+    
+    return result
+}
