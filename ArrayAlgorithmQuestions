@@ -313,3 +313,13 @@ func removeDuplicatesInPlace(nums: inout [Int]) -> Int {
     }
     return nums.count
 }
+
+// 21.) remove a given element from array and return length
+func removeElementArray(nums: inout [Int], value: Int) -> Int {
+    for num in nums {
+        if num == value {
+            nums.remove(at: nums.index(of: num)!)
+        }
+    }
+    return nums.count
+}
