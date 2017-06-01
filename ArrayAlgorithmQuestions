@@ -369,3 +369,30 @@ func maxSubArray(nums: [Int]) -> Int {
     }
     return maxSoFar
 }
+
+// 24.) find sub array with largest product in array of both positive and negative number
+func maxProductSubArray(nums: [Int]) -> Int {
+    var maxEnding = 1
+    var minEnding = 1
+    var maxSoFar = 1
+    
+    for num in nums {
+        if num > 0 {
+            maxEnding = maxEnding * num
+            minEnding = min(minEnding * num, 1)
+        } else if num == 0 {
+            maxEnding = 1
+            minEnding = 1
+        } else {
+            let temp = maxEnding
+            maxEnding = max(minEnding * num, 1)
+            minEnding = temp * num
+        }
+        
+        if maxSoFar < maxEnding {
+            maxSoFar = maxEnding
+        }
+    }
+    
+    return maxSoFar
+}
