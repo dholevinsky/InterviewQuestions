@@ -396,3 +396,28 @@ func maxProductSubArray(nums: [Int]) -> Int {
     
     return maxSoFar
 }
+
+// 25.) find length of longest consecutive sequence in array of integers
+func longestConSeq(nums: [Int]) -> Int {
+    var set = Set<Int>()
+    var result = 0
+    
+    for num in nums {
+        set.insert(num)
+    }
+    
+    for num in nums {
+        if !set.contains(num - 1) {
+            var i = num
+            while set.contains(i) {
+                i += 1
+                
+                if result < i - num {
+                    result = i - num
+                }
+            }
+        }
+    }
+    
+    return result
+}
