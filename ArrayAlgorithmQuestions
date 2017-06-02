@@ -421,3 +421,25 @@ func longestConSeq(nums: [Int]) -> Int {
     
     return result
 }
+
+// 26.) find minimum value in a rotated sorted array
+func minRotatedArray(nums: [Int]) -> Int {
+    var low = 0
+    var high = nums.count - 1
+    
+    while low < high {
+        if nums[low] < nums[high] {
+            return nums[low]
+        }
+        
+        let mid = (low + high) / 2
+        
+        if nums[mid] >= nums[low] {
+            low = mid + 1
+        } else {
+            high = mid
+        }
+    }
+    
+    return nums[low]
+}
