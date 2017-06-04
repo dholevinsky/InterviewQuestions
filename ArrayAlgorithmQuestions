@@ -465,3 +465,30 @@ func EquilibriumProblem(_ A : inout [Int]) -> Int {
     
     return -1
 }
+
+// Pascal's Triangle
+func generate(_ numRows: Int) -> [[Int]] {
+    if numRows == 0 {
+        return []
+    }
+    var result = [[1], [1, 1]]
+    
+    if numRows == 1 {
+        return [[1]]
+    } else if numRows == 2 {
+        return [[1], [1, 1]]
+    }
+    
+    for index in 2..<numRows {
+        var array = [1]
+        
+        for index2 in 1..<index {
+            array.append(result[index - 1][index2 - 1] + result[index - 1][index2])
+        }
+        
+        array.append(1)
+        result.append(array)
+    }
+    
+    return result
+}
