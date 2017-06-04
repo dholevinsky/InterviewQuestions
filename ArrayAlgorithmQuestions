@@ -443,3 +443,25 @@ func minRotatedArray(nums: [Int]) -> Int {
     
     return nums[low]
 }
+
+// find the equalibrium position of the array
+func EquilibriumProblem(_ A : inout [Int]) -> Int {
+    var sum = 0
+    var sumLower = 0
+    
+    for num in A {
+        sum += num
+    }
+    
+    for index in 0..<A.count {
+        sum -= A[index]
+        if sum == sumLower {
+            return index
+        }
+        sumLower += A[index]
+        
+    }
+    
+    
+    return -1
+}
