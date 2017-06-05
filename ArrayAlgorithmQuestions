@@ -520,3 +520,24 @@ func searchRotatedArray(nums: [Int], key: Int) -> Int? {
     }
     return nums[start] == key ? start : -1
 }
+
+// 0-1 knapsack problem
+func knapSack(W: Int, wt: [Int], val: [Int], n: Int) -> Int {
+    var k = [[Int?]]()
+    k = Array(repeating: Array(repeating: nil, count: W+1), count: n+1)
+    
+    for i in 0...n {
+        for w in 0...W {
+            if i == 0 || w == 0 {
+                k[i][w] = 0
+            } else if wt[i-1] <= w {
+                let temp1 = val[i-1]
+                let temp2 = k[i-1][w-wt[i-1]]
+                k[i][w] = max(temp1 + temp2!, k[i-1][w]!)
+            } else {
+                k[i][w] = k[i-1][w]
+            }
+        }
+    }
+    return k[n][W]!
+}
