@@ -492,3 +492,31 @@ func generate(_ numRows: Int) -> [[Int]] {
     
     return result
 }
+
+// search rotated sorted array
+func searchRotatedArray(nums: [Int], key: Int) -> Int? {
+    var start = 0
+    var end = nums.count - 1
+    
+    while start < end {
+        let mid = (start + end) / 2
+        if nums[mid] == key {
+            return mid
+        }
+        
+        if nums[start] <= nums[mid] {
+            if key >= nums[start] && key < nums[mid] {
+                end = mid - 1
+            } else {
+                start = mid + 1
+            }
+        } else {
+            if key > nums[mid] && key <= nums[end] {
+                start = mid + 1
+            } else {
+                end = mid - 1
+            }
+        }
+    }
+    return nums[start] == key ? start : -1
+}
