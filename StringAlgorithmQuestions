@@ -304,3 +304,34 @@ func checkPalindrome2(str: String, start: Int, end: Int) -> Bool {
     }
     return true
 }
+
+// clean up phone number
+func cleanUpPhoneNumber(_ S : inout String) -> String {
+    var phoneNumber = ""
+    let sArray = Array(S.characters)
+    var count = 0
+    var digitsCount = 0
+    
+    for index in 0..<sArray.count {
+        if count < 3 {
+            if sArray[index] != " " && sArray[index] != "-" {
+                phoneNumber += String(sArray[index])
+                digitsCount += 1
+                count += 1
+            }
+        }
+        
+        if count == 3 && index != sArray.count - 1 {
+            phoneNumber += "-"
+            count = 0
+        }
+    }
+    
+    if digitsCount % 3 == 1 {
+        var tempPhoneNumber = Array(phoneNumber.characters)
+        swap(&tempPhoneNumber[tempPhoneNumber.count - 3], &tempPhoneNumber[tempPhoneNumber.count - 2])
+        phoneNumber = String(tempPhoneNumber)
+    }
+    
+    return phoneNumber
+}
