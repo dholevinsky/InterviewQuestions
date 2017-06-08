@@ -11,3 +11,16 @@ func reverseList(head: SingleListNode?) -> SingleListNode? {
     
     return newHead
 }
+
+// middle node
+func middleNode(head: SingleListNode?) -> SingleListNode? {
+    var walker = head
+    var runner = head
+    
+    while runner != nil && runner?.next != nil {
+        runner = runner?.next?.next
+        walker = walker?.next
+    }
+    
+    return walker
+}
