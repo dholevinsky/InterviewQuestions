@@ -1,0 +1,13 @@
+// reverse list
+func reverseList(head: SingleListNode?) -> SingleListNode? {
+    var newHead: SingleListNode? = nil
+    var inputHead = head
+    
+    while inputHead != nil {
+        inputHead?.next = newHead
+        newHead = inputHead
+        inputHead = inputHead?.next
+    }
+    
+    return newHead
+}
