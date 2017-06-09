@@ -24,3 +24,17 @@ func middleNode(head: SingleListNode?) -> SingleListNode? {
     
     return walker
 }
+
+// delete duplicates in a sorted linked list
+func deleteDuplicatesInSorted(_ head: SingleListNode?) -> SingleListNode? {
+    var newHead = head
+    
+    while newHead?.next != nil {
+        if newHead?.value == newHead?.next?.value {
+            newHead?.next = newHead?.next?.next
+        } else {
+            newHead = newHead?.next
+        }
+    }
+    return newHead
+}
