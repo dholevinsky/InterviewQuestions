@@ -38,3 +38,22 @@ func deleteDuplicatesInSorted(_ head: SingleListNode?) -> SingleListNode? {
     }
     return newHead
 }
+
+// delete duplicates in an unsorted linked list
+func deleteDuplicates(head: SingleListNode?) -> SingleListNode? {
+    var set = Set<Int>()
+    
+    var prev: SingleListNode? = nil
+    var inputHead = head
+    
+    while inputHead != nil {
+        if set.contains((head?.value)!) {
+            prev?.next = inputHead?.next
+        } else {
+            set.insert((inputHead?.value)!)
+            prev = inputHead
+        }
+        inputHead = inputHead?.next
+    }
+    return inputHead
+}
