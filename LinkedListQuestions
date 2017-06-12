@@ -57,3 +57,22 @@ func deleteDuplicates(head: SingleListNode?) -> SingleListNode? {
     }
     return inputHead
 }
+
+// check if a linked list has a cycle
+func hasCycle(head: SingleListNode?) -> Bool {
+    if head == nil {
+        return false
+    }
+    
+    var walker = head
+    var runner = head
+    
+    while runner?.next != nil && runner?.next?.next != nil {
+        walker = walker?.next
+        runner = runner?.next?.next
+        if walker === runner { //might be walker == runner
+            return true
+        }
+    }
+    return false
+}
