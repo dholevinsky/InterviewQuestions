@@ -118,3 +118,28 @@ func insert(head: SingleListNode?, node: SingleListNode) -> SingleListNode? {
     
     return head
 }
+
+// find the nth to last node
+func nthToLast(head: SingleListNode?, n: Int) -> SingleListNode? {
+    if head == nil || n < 1 {
+        return nil
+    }
+    
+    var p1 = head
+    var p2 = head
+    
+    for _ in 1..<n-1 {
+        if p2 == nil {
+            return nil
+        }
+        
+        p2 = p2?.next
+        
+        while p2 != nil {
+            p1 = p1?.next
+            p2 = p2?.next
+        }
+    }
+    
+    return p1
+}
