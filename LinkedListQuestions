@@ -99,3 +99,22 @@ func mergeTwoLists(_ l1: SingleListNode?, _ l2: SingleListNode?) -> SingleListNo
     
     return newHead
 }
+
+// insert a node into a sorted linked list
+func insert(head: SingleListNode?, node: SingleListNode) -> SingleListNode? {
+    if head == nil || (head?.value)! > node.value {
+        node.next = head
+        return node
+    }
+    
+    var currentNode = head
+    
+    while currentNode != nil && (currentNode?.next?.value)! < node.value {
+        currentNode = currentNode?.next
+        
+        node.next = currentNode?.next
+        currentNode?.next = node
+    }
+    
+    return head
+}
