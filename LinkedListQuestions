@@ -143,3 +143,35 @@ func nthToLast(head: SingleListNode?, n: Int) -> SingleListNode? {
     
     return p1
 }
+
+// add two numbers represents by linked lists in reverse
+func addListsReversed(list1: SingleListNode?, list2: SingleListNode?) -> SingleListNode? {
+    var carry = 0
+    
+    let newHead = SingleListNode(value: 0)
+    var first = list1
+    var second = list2
+    var third = newHead
+    
+    while first != nil || second != nil {
+        if first != nil {
+            carry += (first?.value)!
+            first = first?.next
+        }
+        
+        if second != nil {
+            carry += (second?.value)!
+            second = second?.next
+        }
+        
+        third.next = SingleListNode(value: carry % 10)
+        third = third.next!
+        carry /= 10
+        
+    }
+    
+    if carry == 1 {
+        third.next = SingleListNode(value: 1)
+    }
+    return newHead.next
+}
