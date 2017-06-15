@@ -175,3 +175,46 @@ func addListsReversed(list1: SingleListNode?, list2: SingleListNode?) -> SingleL
     }
     return newHead.next
 }
+
+// add two numbers represents by linked lists forward
+func addListsForward(head1: SingleListNode?, head2: SingleListNode?) -> SingleListNode? {
+    var newHead: SingleListNode?
+    var prev: SingleListNode?
+    var temp: SingleListNode?
+    var carry = 0
+    var sum = 0
+    var first = head1
+    var second = head2
+    
+    while first != nil || second != nil {
+        sum = carry + (first != nil ? (first?.value)! : 0) + (second != nil ? (second?.value)! : 0)
+        
+        carry = (sum >= 10 ? 1 : 0)
+        
+        sum %= 10
+        
+        temp = SingleListNode(value: sum)
+        
+        if newHead != nil {
+            newHead = temp
+        } else {
+            prev?.next = temp
+        }
+        
+        prev = temp
+        
+        if first != nil {
+            first = first?.next
+        }
+        
+        if second != nil {
+            second = second?.next
+        }
+    }
+    
+    if carry > 0 {
+        temp?.next = SingleListNode(value: carry)
+    }
+    
+    return newHead
+}
