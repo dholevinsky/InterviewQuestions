@@ -247,3 +247,24 @@ func compareStrings(node1: SingleListNode?, node2: SingleListNode?) -> Int {
     
     return 0
 }
+
+// reverse a doubly linked list
+func reverse(head: DoublyListNode?) -> DoublyListNode? {
+    var temp: DoublyListNode? = nil
+    var currentNode = head
+    var newHead = head
+    
+    while currentNode != nil {
+        temp = currentNode?.previous
+        currentNode?.previous = currentNode?.next
+        currentNode?.next = temp
+        currentNode = currentNode?.previous
+    }
+    
+    if temp != nil {
+        newHead = temp?.previous
+        return newHead
+    }
+    
+    return head
+}
