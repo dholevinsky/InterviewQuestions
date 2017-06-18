@@ -218,3 +218,32 @@ func addListsForward(head1: SingleListNode?, head2: SingleListNode?) -> SingleLi
     
     return newHead
 }
+
+// compare two string represents by two linked lists
+func compareStrings(node1: SingleListNode?, node2: SingleListNode?) -> Int {
+    var head1 = node1
+    var head2 = node2
+    
+    if head1 == nil && head2 == nil {
+        return 1
+    }
+    
+    while head1 != nil && head2 != nil && (head1?.value)! == (head2?.value)! {
+        head1 = head1?.next
+        head2 = head2?.next
+    }
+    
+    if head1 != nil && head2 != nil {
+        return (head1?.value)! > (head2?.value)! ? 1 : -1
+    }
+    
+    if head1 != nil && head2 == nil {
+        return 1
+    }
+    
+    if head1 == nil && head2 != nil {
+        return -1
+    }
+    
+    return 0
+}
