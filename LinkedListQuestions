@@ -268,3 +268,9 @@ func reverse(head: DoublyListNode?) -> DoublyListNode? {
     
     return head
 }
+
+// remove a node from a doubly linked list
+func delete(node: DoublyListNode) {
+    node.next?.previous = node.previous
+    node.previous?.next = node.next
+}
