@@ -6,6 +6,10 @@
 
 3.) Common Array Interview Questions
 
-4.) Other Interview Questions
+4.) Common Linked List Interview Questions
+
+5.) Common Binary Tree Interview Questions
+
+6.) Other Interview Questions
 
 
