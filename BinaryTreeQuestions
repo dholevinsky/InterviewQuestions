@@ -1,0 +1,23 @@
+// depth first search
+func DFS(root: BinaryTreeNode) -> [Int] {
+    var stack = Stack<BinaryTreeNode>()
+    stack.push(root)
+    
+    var nodesExplored = [Int]()
+    
+    while !stack.isEmpty {
+        let node = stack.pop()
+        nodesExplored.append((node?.val)!)
+        
+        if node?.right != nil {
+            stack.push((node?.right)!)
+        }
+        
+        if node?.left != nil {
+            stack.push((node?.left)!)
+        }
+        
+    }
+    
+    return nodesExplored
+}
