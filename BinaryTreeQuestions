@@ -43,3 +43,15 @@ func BFS(root: BinaryTreeNode) -> [Int] {
     
     return nodesExplored
 }
+
+// in order traversal
+func inOrder(root: BinaryTreeNode?) -> [Int] {
+    var nodesExplored = [Int]()
+    if root != nil {
+        nodesExplored += inOrder(root: root?.left)
+        nodesExplored.append((root?.val)!)
+        nodesExplored += inOrder(root: root?.right)
+    }
+    
+    return nodesExplored
+}
