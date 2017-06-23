@@ -21,3 +21,25 @@ func DFS(root: BinaryTreeNode) -> [Int] {
     
     return nodesExplored
 }
+
+// breadth first search
+func BFS(root: BinaryTreeNode) -> [Int] {
+    var queue = Queue<BinaryTreeNode>()
+    queue.enqueue(root)
+    
+    var nodesExplored = [Int]()
+    
+    while !queue.isEmpty {
+        let node = queue.dequeue()
+        nodesExplored.append((node?.val)!)
+        
+        if node?.left != nil {
+            queue.enqueue((node?.left)!)
+        }
+        if node?.right != nil {
+            queue.enqueue((node?.right)!)
+        }
+    }
+    
+    return nodesExplored
+}
