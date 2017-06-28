@@ -67,3 +67,5 @@ func preOrder(root: BinaryTreeNode?) -> [Int] {
     
     return nodesExplored
 }
+
+// post order traversal
