@@ -55,3 +55,15 @@ func inOrder(root: BinaryTreeNode?) -> [Int] {
     
     return nodesExplored
 }
+
+// pre order traversal
+func preOrder(root: BinaryTreeNode?) -> [Int] {
+    var nodesExplored = [Int]()
+    if root != nil {
+        nodesExplored.append((root?.val)!)
+        nodesExplored += preOrder(root: root?.left)
+        nodesExplored += preOrder(root: root?.right)
+    }
+    
+    return nodesExplored
+}
