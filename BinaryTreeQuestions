@@ -101,3 +101,5 @@ func minDepth(root: BinaryTreeNode?) -> Int {
     
     return min(minDepth(root: root?.left), minDepth(root: root?.right)) + 1
 }
+
+// max depth of BT
