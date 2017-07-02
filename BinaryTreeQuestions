@@ -103,3 +103,39 @@ func minDepth(root: BinaryTreeNode?) -> Int {
 }
 
 // max depth of BT
+func maxDepth(root: BinaryTreeNode?) -> Int {
+    if root == nil {
+        return 0
+    }
+    
+    return 1 + max(maxDepth(root: root?.left), maxDepth(root: root?.right))
+}
+
+// sum of left leaves
+func sumOfLeftLeaves(_ root: BinaryTreeNode?) -> Int {
+    if root == nil || root?.left == nil && root?.right == nil {
+        return 0
+    }
+    var sum = 0
+    
+    var queue = Queue<BinaryTreeNode>()
+    queue.enqueue(root!)
+    
+    
+    while !queue.isEmpty {
+        let node = queue.dequeue()
+        
+        if node?.left != nil {
+            queue.enqueue((node?.left)!)
+        }
+        if node?.right != nil {
+            queue.enqueue((node?.right)!)
+        }
+        
+        if node?.left != nil && node?.left?.right == nil && node?.left?.left == nil {
+            sum += (node?.left?.val)!
+        }
+    }
+    
+    return sum
+}
