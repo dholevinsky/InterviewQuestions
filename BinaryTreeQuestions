@@ -139,3 +139,20 @@ func sumOfLeftLeaves(_ root: BinaryTreeNode?) -> Int {
     
     return sum
 }
+
+// full tree = if each node has either 0 or 2 children
+func isFullTree(root: BinaryTreeNode?) -> Bool {
+    if root == nil {
+        return true
+    }
+    
+    if root?.left == nil && root?.right == nil {
+        return true
+    }
+    
+    if root?.left != nil && root?.right != nil  {
+        return isFullTree(root: root?.left) && isFullTree(root: root?.right)
+    }
+    
+    return false
+}
