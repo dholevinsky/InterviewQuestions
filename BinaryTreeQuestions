@@ -173,3 +173,18 @@ func isSameTree(_ p: BinaryTreeNode?, _ q: BinaryTreeNode?) -> Bool {
     
     return false
 }
+
+// find the lowest common ancestor of a BT
+func lowestCommonAncestor(root: BinaryTreeNode?, p: BinaryTreeNode?, q: BinaryTreeNode?) -> BinaryTreeNode? {
+    if root == nil || p == nil || q == nil {
+        return root
+    }
+    
+    let left = lowestCommonAncestor(root: root?.left, p: p, q: q)
+    let right = lowestCommonAncestor(root: root?.right, p: p, q: q)
+    if left != nil && right != nil {
+        return root
+    }
+    
+    return left != nil ? left : right
+}
