@@ -156,3 +156,20 @@ func isFullTree(root: BinaryTreeNode?) -> Bool {
     
     return false
 }
+
+// determine if two trees are the same
+func isSameTree(_ p: BinaryTreeNode?, _ q: BinaryTreeNode?) -> Bool {
+    if p == nil && q == nil {
+        return true
+    }
+    
+    if p == nil || q == nil {
+        return false
+    }
+    
+    if (p?.val)! == (q?.val)! {
+        return isSameTree(p?.left, q?.left) && isSameTree(p?.right, q?.right)
+    }
+    
+    return false
+}
