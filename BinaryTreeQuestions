@@ -188,3 +188,18 @@ func lowestCommonAncestor(root: BinaryTreeNode?, p: BinaryTreeNode?, q: BinaryTr
     
     return left != nil ? left : right
 }
+
+// insert a node into a BST
+func insert(root: BinarySearchTree?, k: Int) -> BinarySearchTree? {
+    if root == nil {
+        let newNode = BinarySearchTree(value: k)
+        return newNode
+    }
+    
+    if (root?.value)! > k {
+        root?.left = insert(root: root?.left, k: k)
+    } else if (root?.value)! < k {
+        root?.right = insert(root: root?.right, k: k)
+    }
+    return root
+}
