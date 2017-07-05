@@ -203,3 +203,16 @@ func insert(root: BinarySearchTree?, k: Int) -> BinarySearchTree? {
     }
     return root
 }
+
+// find a value in a BST
+func search(root: BinarySearchTree?, k: Int) -> BinarySearchTree? {
+    if root == nil || (root?.value)! == k {
+        return root
+    }
+    
+    if (root?.value)! < k {
+        return search(root: root?.right, k: k)
+    }
+    
+    return search(root: root?.left, k: k)
+}
