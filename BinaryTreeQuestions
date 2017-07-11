@@ -229,3 +229,22 @@ func isBST(root: BinarySearchTree?, min: Int, max: Int) -> Bool {
     
     return isBST(root: root?.left, min: min, max: (root?.value)! - 1) && isBST(root: root?.right, min: (root?.value)! + 1, max: max)
 }
+
+// find the lowest common ancestor on a BST
+func lowestCommonAncestorBST(root: BinarySearchTree?, n1: BinarySearchTree, n2: BinarySearchTree) -> BinarySearchTree? {
+    if root == nil {
+        return nil
+    }
+    
+    // If both n1 and n2 are smaller than root, then LCA lies in left
+    if (root?.value)! > n1.value && (root?.value)! > n2.value {
+        return lowestCommonAncestorBST(root: root?.left, n1: n1, n2: n2)
+    }
+    
+    // If both n1 and n2 are larger than root, then LCA lies in right
+    if (root?.value)! < n1.value && (root?.value)! < n2.value {
+        return lowestCommonAncestorBST(root: root?.right, n1: n1, n2: n2)
+    }
+    
+    return root
+}
