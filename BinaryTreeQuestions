@@ -216,3 +216,16 @@ func search(root: BinarySearchTree?, k: Int) -> BinarySearchTree? {
     
     return search(root: root?.left, k: k)
 }
+
+// determine whether a BT is a BST
+func isBST(root: BinarySearchTree?, min: Int, max: Int) -> Bool {
+    if root == nil {
+        return true
+    }
+    
+    if (root?.value)! < min || (root?.value)! > max {
+        return false
+    }
+    
+    return isBST(root: root?.left, min: min, max: (root?.value)! - 1) && isBST(root: root?.right, min: (root?.value)! + 1, max: max)
+}
